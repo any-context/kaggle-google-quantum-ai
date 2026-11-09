@@ -136,11 +136,19 @@ def gf2_solve_affine(cols: list[np.ndarray], target: np.ndarray, names: list[str
         return None
     # rows = shots (sample), columns = wires + const ; build as uint8 matrix (sample_words*64 x k+1)
     rows = sample_words * 64
+    # sample words spread over the whole domain (the low inputs all share large z, so a prefix
+    # sample would make the threshold columns collinear with the constant)
+    # include the low words too: inputs with large z live only in the first few hundred words
+    # log-spaced words so that every leading-zero count z is represented in the sample
+    idx = np.unique(np.concatenate([np.arange(min(160, len(target))),
+                                    np.geomspace(1, len(target) - 1, 4 * sample_words).astype(int),
+                                    np.linspace(0, len(target) - 1, sample_words).astype(int)]))
+    rows = len(idx) * 64
     A = np.zeros((rows, k + 2), dtype=np.uint8)
     for j, c in enumerate(cols):
-        A[:, j] = np.unpackbits(c[:sample_words].view(np.uint8), bitorder="little")
+        A[:, j] = np.unpackbits(c[idx].view(np.uint8), bitorder="little")
     A[:, k] = 1
-    A[:, k + 1] = np.unpackbits(target[:sample_words].view(np.uint8), bitorder="little")
+    A[:, k + 1] = np.unpackbits(target[idx].view(np.uint8), bitorder="little")
     # eliminate
     piv_cols = []
     r = 0
