@@ -1,0 +1,26 @@
+{
+ "decode_exact": true,
+ "2": {
+  "n_p": 2,
+  "Q": 205,
+  "T": 4096,
+  "Q_e4": 205,
+  "T_e4": 4118,
+  "y1_matches_model": true,
+  "phase_matches_reference": true,
+  "x_restored": true,
+  "dirty_count": 0
+ },
+ "3": {
+  "n_p": 3,
+  "Q": 208,
+  "T": 4636,
+  "Q_e4": 209,
+  "T_e4": 4717,
+  "y1_matches_model": true,
+  "phase_matches_reference": true,
+  "x_restored": true,
+  "dirty_count": 0
+ },
+ "all_ok": true
+}

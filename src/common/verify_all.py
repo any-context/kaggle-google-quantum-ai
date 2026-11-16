@@ -33,13 +33,13 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = HERE.parents[1]  # repo root (this file lives in src/common/)
 DATA = ROOT / "data"
 RUNS = ROOT / "notes" / "runs"
 VERIFIERS = DATA / "verifiers"
 SAMPLE = DATA / "sample_submission"
 
-DEFAULT_PY = "$VENV/bin/python"
+DEFAULT_PY = sys.executable
 
 
 def _cmd(task: str, target: Path, salt: str, smoke: bool) -> list[str]:
@@ -75,8 +75,11 @@ def _target(task: str) -> Path:
 
 def peak_rss_mb(time_txt: str) -> float | None:
     """Parse `/usr/bin/time -l` output for the peak resident set size."""
-    m = re.search(r"(\d+)\s+maximum resident set size", time_txt)
-    return int(m.group(1)) / (1024 * 1024) if m else None
+    m = re.search(r"(\d+)\s+maximum resident set size", time_txt)  # macOS `time -l` (bytes)
+    if m:
+        return int(m.group(1)) / (1024 * 1024)
+    m = re.search(r"Maximum resident set size \(kbytes\):\s+(\d+)", time_txt)  # GNU `time -v`
+    return int(m.group(1)) / 1024 if m else None
 
 
 def wall_seconds(time_txt: str) -> float | None:

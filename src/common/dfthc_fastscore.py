@@ -23,7 +23,7 @@ from pathlib import Path
 
 import numpy as np
 
-COMP = Path(__file__).resolve().parents[1]
+COMP = Path(__file__).resolve().parents[2]  # repo root (this file lives in src/common/)
 sys.path.insert(0, str(COMP / "data" / "verifiers"))
 
 from dfthcsos.scoreinfra.dfthc_math import evaluate_dfthc_angle_words   # noqa: E402

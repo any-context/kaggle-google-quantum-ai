@@ -26,7 +26,7 @@ import sys
 import tempfile
 import zipfile
 
-HERE = pathlib.Path(__file__).resolve().parent.parent
+HERE = pathlib.Path(__file__).resolve().parents[2]  # repo root (this file lives in src/common/)
 METRIC_PY = HERE / "notes" / "metric_kernel_extracted.py"
 
 # From the metric source.

@@ -22,7 +22,7 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = HERE.parents[1]  # repo root (this file lives in src/common/)
 sys.path.insert(0, str(ROOT / "data" / "verifiers"))
 
 from dfthcsos.scoreinfra import dfthc_math as M  # noqa: E402

@@ -33,7 +33,7 @@ import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent
+ROOT = HERE.parents[1]  # repo root (this file lives in src/common/)
 DATA = ROOT / "data"
 SAMPLE = DATA / "sample_submission"
 DEFAULT_OUT = ROOT / "build" / "submission.zip"
