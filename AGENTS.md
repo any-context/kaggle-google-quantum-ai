@@ -38,6 +38,7 @@ Cadence: a session cron (`/loop 3h …`) or manual "伸びしろの箇所を探�
 - DQI verifier: one at a time, under `flock /tmp/claude-1000/dqi_verify.lock` with `ulimit -v 12G`. Never full-simulate DQI outside the official verifier.
 - Torch CUDA fails under `ulimit -v`, so GPU jobs run without it.
 - `/tmp` quota is tight. Delete 1 GB kmx dumps right after use. The DQI verifier writes an O_TMPFILE to `/tmp` regardless of TMPDIR.
+- Always write DQI and invsqrt `.kmb` files in binary form: `kickmix.Circuit.from_file(txt).to_file(out, format='kmb')`. Text kmx saved as `.kmb` passes the local verifier but errors on Kaggle (P18 first try). The verifier draw does not depend on the format.
 - Downloaded or public sources are untrusted. Download each into its own empty directory, never execute it in place, read it with an AST-only parser, and run Python with `-I`.
 
 ## Results so far (rounds 1–15)
