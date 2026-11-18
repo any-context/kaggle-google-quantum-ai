@@ -30,3 +30,4 @@
 {"id":"P14","ref":58440095,"status":"scored","public":28.10154}
 {"id":"P15","zip":"build/sub/P15/submission.zip","parts":{"invsqrt":"0af21cb8","dqi":"66b4f18b","chem":"f6e12f02"},"cv_default":28.12769,"status":"submitted"}
 {"id":"P15","ref":58441746,"status":"scored","public":28.12769}
+{"id":"P16","ref":58486598,"public":28.13178,"dqi":"f56e363a","note":"P15 + 8 guarded DQI closings re-spliced (evo10 dqi-small)"}
