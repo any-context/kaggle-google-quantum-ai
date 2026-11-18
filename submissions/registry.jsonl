@@ -33,3 +33,4 @@
 {"id":"P16","ref":58486598,"public":28.13178,"dqi":"f56e363a","note":"P15 + 8 guarded DQI closings re-spliced (evo10 dqi-small)"}
 {"id":"P17","ref":58500017,"public":28.1741,"dqi":"f56e363a","invsqrt":"864f81cd","note":"P16 dqi + maoxin123 qcc-28-18 4022-T chem loaders and invsqrt (Apache-2.0/CC0)"}
 {"id":"P18","ref":58502393,"public":28.18693,"dqi":"405bae75","note":"P17 + manwithacat 957d6733 (Apache-2.0) + own 8 closings; first try 58502112 ERROR due to text kmb"}
+{"id":"P19","ref":58502556,"public":28.18818,"dqi":"3dd4e998","note":"P18 + own 49 retained GF24 products (-49 Toffoli)"}
